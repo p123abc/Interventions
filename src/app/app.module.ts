@@ -20,9 +20,6 @@ import { RouterModule } from '@angular/router';
     BrowserModule,
     AppRoutingModule,
     AngularFontAwesomeModule,
-    RouterModule.forRoot([
-      {path:'accueil', component:AccueilComponent}
-    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
