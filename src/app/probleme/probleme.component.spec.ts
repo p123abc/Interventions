@@ -52,7 +52,13 @@ describe('ProblemeComponent', () => {
 
   it('Zone PRÉNOM invalide avec 1 caractère', () => {
     let zone = component.problemeForm.controls['nomProbleme'];
-    zone.setValue('');
+    zone.setValue('a'.repeat(1));
     expect(zone.valid).toBeFalsy();
+    });
+
+  it('Zone PRÉNOM invalide avec 1 caractère', () => {
+    let zone = component.problemeForm.controls['nomProbleme'];
+    zone.setValue(' '.repeat(50));
+    expect(zone.valid).toBeTruthy();
     });
 });
