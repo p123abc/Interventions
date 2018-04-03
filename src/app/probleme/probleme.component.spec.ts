@@ -49,4 +49,10 @@ describe('ProblemeComponent', () => {
     zone.setValue('');
      expect(zone.valid).toBeFalsy();
     });
+
+  it('Zone PRÉNOM invalide avec 1 caractère', () => {
+    let zone = component.problemeForm.controls['nomProbleme'];
+    zone.setValue('');
+    expect(zone.valid).toBeFalsy();
+    });
 });
