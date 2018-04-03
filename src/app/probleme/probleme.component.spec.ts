@@ -45,15 +45,19 @@ describe('ProblemeComponent', () => {
     });
 
   it('Zone PRÉNOM invalide avec aucune valeur', () => {
+    let errors = {};
     let zone = component.problemeForm.controls['nomProbleme'];
     zone.setValue('');
-     expect(zone.valid).toBeFalsy();
+    errors = zone.errors || {};
+    expect(errors['minlength']).toBeTruthy();
     });
 
   it('Zone PRÉNOM invalide avec 1 caractère', () => {
+    let errors = {};
     let zone = component.problemeForm.controls['nomProbleme'];
     zone.setValue('a'.repeat(1));
-    expect(zone.valid).toBeFalsy();
+    errors = zone.errors || {};
+    expect(errors['minlength']).toBeTruthy();
     });
 
   it('Zone PRÉNOM valide avec 50 espaces', () => {
