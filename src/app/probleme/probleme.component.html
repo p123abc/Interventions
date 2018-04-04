@@ -3,8 +3,39 @@
     <h5 class="card-header" style="background-color: gray; color:white"> Déclarer un problème</h5>
     <div class="card-body">
       <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary"><fa name="save"></fa>Sauvegarder</a>
+      <div class="card-text">
+        <form class="form-horizontal"
+        novalidate
+        (ngSubmit)= "save()"
+        [formGroup]="problemeForm">
+          <div class="form-group row">
+            <label for="nomProblemeID" class="col-md-2 col-form-label text-right">Nom du Problème :</label>
+            <div class="col-md-10">
+              <input class="form-control"
+              id="nomProblemeID"
+              type="text"
+              placeholder="Nom du probleme (obligatoire)"
+              formControlName="nomProbleme"
+              [ngClass]="{'is-invalid': (problemeForm.get('nomProbleme').touched ||
+              problemeForm.get('nomProbleme').dirty) &&
+              !problemeForm.get('nomProbleme').valid,
+              'is-valid':(problemeForm.get('nomProbleme').touched ||
+              problemeForm.get('nomProbleme').dirty &&
+              problemeForm.get('nomProbleme').valid)}" />
+              <span class="form-text" *ngIf="(problemeForm.get('nomProbleme').touched ||
+                problemeForm.get('nomProbleme').dirty) &&
+                problemeForm.get('nomProbleme').errors">
+                <span *ngIf="problemeForm.get('nomProbleme').errors.minlength">
+                  <small class="text-muted">
+                    Indiquer au moin 3 caractères.
+                  </small>
+                </span>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+      
     </div>
   </div>
   
