@@ -10,4 +10,14 @@ export class VerifierNombresValidator {
             return { 'sansEspaces': false};
         };
     }
+//----------------------- TP 09 ------------------------------------------------------------
+    static longueurMinimum(min: number): ValidatorFn {
+        return (c: AbstractControl): { [key: string]: boolean } | null => {
+            // remove all space
+            if (c.value.replace(/ /g,"").length >= min){
+                return{'sansEspaces': true};
+            }
+            return { 'sansEspaces': false};
+        };
+    }
 }
