@@ -38,30 +38,30 @@
               </span>
               <br />
             </div>
-            <label for="prenom" class="col-md-2 col-form-label text-right">Prénom :</label>
+            <label for="nom" class="col-md-2 col-form-label text-right">Nom :</label>
             <div class="col-md-10">
               <input class="form-control"
               id="nom"
               type="text"
               placeholder="Nom (obligatoire)"
-              formControlName="prenom"
-              [ngClass]="{'is-invalid': (problemeForm.get('prenom').touched ||
-              problemeForm.get('prenom').dirty) &&
-              !problemeForm.get('prenom').errors.longueurMinimum,
-              'is-valid':(problemeForm.get('prenom').touched ||
-              problemeForm.get('prenom').dirty &&
-              problemeForm.get('prenom').errors.longueurMinimum)}" />
-              <span class="form-text" *ngIf="(problemeForm.get('prenom').touched ||
-                problemeForm.get('prenom').dirty) &&
-                problemeForm.get('prenom').errors">
-                <span *ngIf="!problemeForm.get('prenom').errors.longueurMinimum && !problemeForm.get('prenom').errors.required">
+              formControlName="nom"
+              [ngClass]="{'is-invalid': (problemeForm.get('nom').touched ||
+              problemeForm.get('nom').dirty) &&
+              !problemeForm.get('nom').errors.longueurMinimum,
+              'is-valid':(problemeForm.get('nom').touched ||
+              problemeForm.get('nom').dirty &&
+              problemeForm.get('nom').errors.longueurMinimum)}" />
+              <span class="form-text" *ngIf="(problemeForm.get('nom').touched ||
+                problemeForm.get('nom').dirty) &&
+                problemeForm.get('nom').errors">
+                <span *ngIf="!problemeForm.get('nom').errors.longueurMinimum && !problemeForm.get('nom').errors.required">
                   <small class="text-muted">
                     Indiquer au moin 3 caractères.
                   </small>
                 </span>
-                <span *ngIf="problemeForm.get('prenom').errors.required">
+                <span *ngIf="problemeForm.get('nom').errors.required">
                   <small class="text-muted">
-                    Indiquer votre prénom.
+                    Indiquer votre nom.
                   </small>
                 </span>
               </span>
