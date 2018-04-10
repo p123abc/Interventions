@@ -15,9 +15,9 @@ export class VerifierNombresValidator {
         return (c: AbstractControl): { [key: string]: boolean } | null => {
             // remove all space
             if (c.value.replace(/ /g,"").length >= min){
-                return{'sansEspaces': true};
+                return{'longueurMinimum': true};
             }
-            return { 'sansEspaces': false};
+            return { 'longueurMinimum': false};
         };
     }
 }
