@@ -14,7 +14,7 @@
               <input class="form-control"
               id="prenom"
               type="text"
-              placeholder="Nom du probleme (obligatoire)"
+              placeholder="Prénom (obligatoire)"
               formControlName="prenom"
               [ngClass]="{'is-invalid': (problemeForm.get('prenom').touched ||
               problemeForm.get('prenom').dirty) &&
@@ -36,6 +36,36 @@
                   </small>
                 </span>
               </span>
+              <br />
+            </div>
+            <label for="prenom" class="col-md-2 col-form-label text-right">Prénom :</label>
+            <div class="col-md-10">
+              <input class="form-control"
+              id="nom"
+              type="text"
+              placeholder="Nom (obligatoire)"
+              formControlName="prenom"
+              [ngClass]="{'is-invalid': (problemeForm.get('prenom').touched ||
+              problemeForm.get('prenom').dirty) &&
+              !problemeForm.get('prenom').errors.longueurMinimum,
+              'is-valid':(problemeForm.get('prenom').touched ||
+              problemeForm.get('prenom').dirty &&
+              problemeForm.get('prenom').errors.longueurMinimum)}" />
+              <span class="form-text" *ngIf="(problemeForm.get('prenom').touched ||
+                problemeForm.get('prenom').dirty) &&
+                problemeForm.get('prenom').errors">
+                <span *ngIf="!problemeForm.get('prenom').errors.longueurMinimum && !problemeForm.get('prenom').errors.required">
+                  <small class="text-muted">
+                    Indiquer au moin 3 caractères.
+                  </small>
+                </span>
+                <span *ngIf="problemeForm.get('prenom').errors.required">
+                  <small class="text-muted">
+                    Indiquer votre prénom.
+                  </small>
+                </span>
+              </span>
+              <br />
             </div>
           </div>
         </form>
