@@ -74,13 +74,22 @@
               <select class="form-control" id="noTypeId" formControlName="noType"
               [ngClass]="{'is-invalid': (problemeForm.get('noType').touched ||
               problemeForm.get('noType').dirty) &&
-              !problemeForm.get('noType').value == null,
+              !problemeForm.get('noType').valid,
               'is-valid':(problemeForm.get('noType').touched ||
               problemeForm.get('noType').dirty &&
-              problemeForm.get('noType').value !== null)}" >
+              problemeForm.get('noType').valid)}" >
                 <option value="">Sélectionner un type de problème</option>
                 <option *ngFor="let cat of typeProbleme" [value]="cat.id">{{cat.descriptionType}}</option>
               </select>
+              <span class="form-text" *ngIf="(problemeForm.get('noType').touched ||
+                problemeForm.get('noType').dirty) &&
+                problemeForm.get('noType').errors">
+                <span *ngIf="!problemeForm.get('noType').valid">
+                  <small class="text-muted">
+                    Sélectionner un type de problème.
+                  </small>
+                </span>
+              </span>
             </div>
             
           </div>
