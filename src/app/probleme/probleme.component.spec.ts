@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ProblemeComponent } from './probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { TypeService } from './type.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ProblemeComponent', () => {
   let component: ProblemeComponent;
@@ -10,8 +12,9 @@ describe('ProblemeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[ReactiveFormsModule,AngularFontAwesomeModule],
-      declarations: [ ProblemeComponent ]
+      imports:[ReactiveFormsModule,AngularFontAwesomeModule, HttpClientModule],
+      declarations: [ ProblemeComponent ],
+      providers:[TypeService]
     })
     .compileComponents();
   }));
@@ -81,4 +84,11 @@ describe('ProblemeComponent', () => {
     errors = zone.errors || {};
     expect(errors['longueurMinimum']).toBeFalsy();
     });
+
+    it('Zone TELEPHONE est désactivée quand ne pas me notifier', () => {
+      component.appliquerNotifications();
+
+      let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+      expect(zone.status).toEqual('DISABLED');
+      });
 });
