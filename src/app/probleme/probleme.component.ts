@@ -21,7 +21,7 @@ export class ProblemeComponent implements OnInit {
       prenom: ['',[Validators.required, VerifierNombresValidator.longueurMinimum(3)]],
       nom: ['',[Validators.required, VerifierNombresValidator.longueurMinimum(3)]],
       noType:['', [Validators.required]],
-      cueillette:['NePasMeNotifier'],
+      notifier:['NePasMeNotifier'],
       notifierGroup: this.fb.group({
         telephoneUsager: [{value: '', disabled: true}]
       })
@@ -32,8 +32,14 @@ export class ProblemeComponent implements OnInit {
               error => this.errorMessage = <any>error);
   } // ngOnInit
 
-  appliquerNotifications(): void {
+  appliquerNotifications(typeNotifier: string): void {
     const telephoneUsagerControl = this.problemeForm.get('notifierGroup.telephoneUsager');
     telephoneUsagerControl.disable();
+
+    if(typeNotifier === 'MeNotifier'){
+      telephoneUsagerControl.enable();
+      telephoneUsagerControl.setValidators([Validators.required]);
+    }
+    telephoneUsagerControl.updateValueAndValidity();
   }
 }

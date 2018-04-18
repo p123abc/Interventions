@@ -86,9 +86,26 @@ describe('ProblemeComponent', () => {
     });
 
     it('Zone TELEPHONE est désactivée quand ne pas me notifier', () => {
-      component.appliquerNotifications();
+      component.appliquerNotifications('NePasMeNotifier');
 
       let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
       expect(zone.status).toEqual('DISABLED');
       });
+
+      it('Zone TELEPHONE est activée quand me notifier', () => {
+        component.appliquerNotifications('MeNotifier');
+  
+        let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+        expect(zone.status).not.toEqual('DISABLED');
+        });
+
+        it('Zone TELEPHONE est invalide sans valeur si MeNotifier', () => {
+          component.appliquerNotifications('MeNotifier');
+
+          let errors = {};
+          let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+          zone.setValue('');
+          errors = zone.errors || {};
+          expect(errors['required']).toBeTruthy();
+          });
 });
