@@ -86,26 +86,75 @@ describe('ProblemeComponent', () => {
     });
 
     it('Zone TELEPHONE est désactivée quand ne pas me notifier', () => {
-      component.appliquerNotifications('NePasMeNotifier');
+     component.appliquerNotifications('NePasMeNotifier');
 
+    let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+    expect(zone.status).toEqual('DISABLED');
+    });
+
+    it('Zone TELEPHONE est activée quand me notifier', () => {
+      component.appliquerNotifications('MeNotifier');
+  
       let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
-      expect(zone.status).toEqual('DISABLED');
+      expect(zone.status).not.toEqual('DISABLED');
+     });
+
+      it('Zone TELEPHONE est invalide sans valeur si MeNotifier', () => {
+        component.appliquerNotifications('MeNotifier');
+
+        let errors = {};
+        let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+        zone.setValue('');
+        errors = zone.errors || {};
+        expect(errors['required']).toBeTruthy();
       });
 
-      it('Zone TELEPHONE est activée quand me notifier', () => {
-        component.appliquerNotifications('MeNotifier');
+      it('Zone ADRESSECOURRIEL est désactivée quand ne pas me notifier', () => {
+        component.appliquerNotifications('NePasMeNotifier');
   
-        let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
-        expect(zone.status).not.toEqual('DISABLED');
+        let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
+        expect(zone.status).toEqual('DISABLED');
         });
-
-        it('Zone TELEPHONE est invalide sans valeur si MeNotifier', () => {
+  
+        it('Zone ADRESSECOURRIEL est activée quand me notifier', () => {
           component.appliquerNotifications('MeNotifier');
-
-          let errors = {};
-          let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
-          zone.setValue('');
-          errors = zone.errors || {};
-          expect(errors['required']).toBeTruthy();
+    
+          let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
+          expect(zone.status).not.toEqual('DISABLED');
           });
+  
+          it('Zone ADRESSECOURRIEL est invalide sans valeur si MeNotifier', () => {
+            component.appliquerNotifications('MeNotifier');
+  
+            let errors = {};
+            let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
+            zone.setValue('');
+            errors = zone.errors || {};
+            expect(errors['required']).toBeTruthy();
+            });
+
+            it('Zone CONFIRMERCOURRIEL est désactivée quand ne pas me notifier', () => {
+              component.appliquerNotifications('NePasMeNotifier');
+        
+              let zone = component.problemeForm.get('notifierGroup.confirmerCourriel');
+              expect(zone.status).toEqual('DISABLED');
+              });
+        
+              it('Zone CONFIRMERCOURRIEL est activée quand me notifier', () => {
+                component.appliquerNotifications('MeNotifier');
+          
+                let zone = component.problemeForm.get('notifierGroup.confirmerCourriel');
+                expect(zone.status).not.toEqual('DISABLED');
+                });
+        
+                it('Zone CONFIRMERCOURRIEL est invalide sans valeur si MeNotifier', () => {
+                  component.appliquerNotifications('MeNotifier');
+        
+                  let errors = {};
+                  let zone = component.problemeForm.get('notifierGroup.confirmerCourriel');
+                  zone.setValue('');
+                  errors = zone.errors || {};
+                  expect(errors['required']).toBeTruthy();
+                  });
+
 });

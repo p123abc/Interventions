@@ -23,7 +23,9 @@ export class ProblemeComponent implements OnInit {
       noType:['', [Validators.required]],
       notifier:['NePasMeNotifier'],
       notifierGroup: this.fb.group({
-        telephoneUsager: [{value: '', disabled: true}]
+        telephoneUsager: [{value: '', disabled: true}],
+        adresseCourriel: [{value: '', disabled: true}],
+        confirmerCourriel: [{value: '', disabled: true}]
       })
     });
 
@@ -34,12 +36,22 @@ export class ProblemeComponent implements OnInit {
 
   appliquerNotifications(typeNotifier: string): void {
     const telephoneUsagerControl = this.problemeForm.get('notifierGroup.telephoneUsager');
+    const adresseCourrielControl = this.problemeForm.get('notifierGroup.adresseCourriel');
+    const confirmerCourrielControl = this.problemeForm.get('notifierGroup.confirmerCourriel');
     telephoneUsagerControl.disable();
+    adresseCourrielControl.disable();
+    confirmerCourrielControl.disable();
 
     if(typeNotifier === 'MeNotifier'){
       telephoneUsagerControl.enable();
       telephoneUsagerControl.setValidators([Validators.required]);
+      adresseCourrielControl.enable();
+      adresseCourrielControl.setValidators([Validators.required]);
+      confirmerCourrielControl.enable();
+      confirmerCourrielControl.setValidators([Validators.required]);
     }
     telephoneUsagerControl.updateValueAndValidity();
+    adresseCourrielControl.updateValueAndValidity();
+    confirmerCourrielControl.updateValueAndValidity();
   }
 }
