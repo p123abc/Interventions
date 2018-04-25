@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { VerifierNombresValidator } from '../shared/caracteres-validator';
+import { emailMatcherValidator } from '../shared/emailMatcher-validator';
 import { TypeService } from './type.service';
 import { IType } from './typeprobleme';
 
@@ -63,7 +64,7 @@ export class ProblemeComponent implements OnInit {
       adresseCourrielControl.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
       confirmerCourrielControl.enable();
       confirmerCourrielControl.setValidators([Validators.required]);
-      notifierGroupControl.setValidators([Validators.compose([])]);
+      notifierGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielDifferents])]);
     }
 
     telephoneUsagerControl.updateValueAndValidity();

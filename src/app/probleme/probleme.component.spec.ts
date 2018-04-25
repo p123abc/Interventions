@@ -183,4 +183,16 @@ describe('ProblemeComponent', () => {
                     
                   });
 
+                  it('Zone COURRIEL est invalide si elle a un format non conforme a un Email', () => {
+                    component.appliquerNotifications('MeNotifierCourriel');
+                    
+                    let zone1 = component.problemeForm.get('notifierGroup.adresseCourriel');
+                    let zone2 = component.problemeForm.get('notifierGroup.confirmerCourriel');
+
+                    
+                    
+                  });
+
+
+
 });
