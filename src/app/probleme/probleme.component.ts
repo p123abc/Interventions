@@ -38,18 +38,33 @@ export class ProblemeComponent implements OnInit {
     const telephoneUsagerControl = this.problemeForm.get('notifierGroup.telephoneUsager');
     const adresseCourrielControl = this.problemeForm.get('notifierGroup.adresseCourriel');
     const confirmerCourrielControl = this.problemeForm.get('notifierGroup.confirmerCourriel');
+    const notifierGroupControl = this.problemeForm.get('notifierGroup');
+
+    telephoneUsagerControl.clearValidators();
+    telephoneUsagerControl.reset();
+
+    adresseCourrielControl.clearValidators();
+    adresseCourrielControl.reset();
+
+    confirmerCourrielControl.clearValidators();
+    confirmerCourrielControl.reset();
+
     telephoneUsagerControl.disable();
     adresseCourrielControl.disable();
     confirmerCourrielControl.disable();
 
-    if(typeNotifier === 'MeNotifier'){
+    if(typeNotifier === 'MeNotifierTelephone'){
       telephoneUsagerControl.enable();
       telephoneUsagerControl.setValidators([Validators.required]);
+    }
+
+    if(typeNotifier === 'MeNotifierCourriel'){
       adresseCourrielControl.enable();
       adresseCourrielControl.setValidators([Validators.required]);
       confirmerCourrielControl.enable();
       confirmerCourrielControl.setValidators([Validators.required]);
     }
+
     telephoneUsagerControl.updateValueAndValidity();
     adresseCourrielControl.updateValueAndValidity();
     confirmerCourrielControl.updateValueAndValidity();

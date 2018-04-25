@@ -92,15 +92,22 @@ describe('ProblemeComponent', () => {
     expect(zone.status).toEqual('DISABLED');
     });
 
-    it('Zone TELEPHONE est activée quand me notifier', () => {
-      component.appliquerNotifications('MeNotifier');
+    it('Zone TELEPHONE est désactivée quand me notifier par courriel', () => {
+      component.appliquerNotifications('MeNotifierCourriel');
+ 
+     let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+     expect(zone.status).toEqual('DISABLED');
+     });
+
+    it('Zone TELEPHONE est activée quand me notifier par Telehpone', () => {
+      component.appliquerNotifications('MeNotifierTelephone');
   
       let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
       expect(zone.status).not.toEqual('DISABLED');
      });
 
-      it('Zone TELEPHONE est invalide sans valeur si MeNotifier', () => {
-        component.appliquerNotifications('MeNotifier');
+      it('Zone TELEPHONE est invalide sans valeur si MeNotifierTelephone', () => {
+        component.appliquerNotifications('MeNotifierTelephone');
 
         let errors = {};
         let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
@@ -115,16 +122,23 @@ describe('ProblemeComponent', () => {
         let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
         expect(zone.status).toEqual('DISABLED');
         });
+
+        it('Zone ADRESSECOURRIEL est désactivée quand me notifier par telephone', () => {
+          component.appliquerNotifications('MeNotifierTelephone');
+    
+          let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
+          expect(zone.status).toEqual('DISABLED');
+          });
   
-        it('Zone ADRESSECOURRIEL est activée quand me notifier', () => {
-          component.appliquerNotifications('MeNotifier');
+        it('Zone ADRESSECOURRIEL est activée quand me notifier par Courriel', () => {
+          component.appliquerNotifications('MeNotifierCourriel');
     
           let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
           expect(zone.status).not.toEqual('DISABLED');
           });
   
-          it('Zone ADRESSECOURRIEL est invalide sans valeur si MeNotifier', () => {
-            component.appliquerNotifications('MeNotifier');
+          it('Zone ADRESSECOURRIEL est invalide sans valeur si Me Notifier par courriel', () => {
+            component.appliquerNotifications('MeNotifierCourriel');
   
             let errors = {};
             let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
