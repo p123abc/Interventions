@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { PatternValidator } from '@angular/forms';
 
 import { ProblemeComponent } from './probleme.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -155,20 +156,31 @@ describe('ProblemeComponent', () => {
               });
         
               it('Zone CONFIRMERCOURRIEL est activée quand me notifier', () => {
-                component.appliquerNotifications('MeNotifier');
+                component.appliquerNotifications('MeNotifierCourriel');
           
                 let zone = component.problemeForm.get('notifierGroup.confirmerCourriel');
                 expect(zone.status).not.toEqual('DISABLED');
                 });
         
-                it('Zone CONFIRMERCOURRIEL est invalide sans valeur si MeNotifier', () => {
-                  component.appliquerNotifications('MeNotifier');
+                it('Zone CONFIRMERCOURRIEL est invalide sans valeur si MeNotifierCourriel', () => {
+                  component.appliquerNotifications('MeNotifierCourriel');
         
                   let errors = {};
                   let zone = component.problemeForm.get('notifierGroup.confirmerCourriel');
                   zone.setValue('');
                   errors = zone.errors || {};
                   expect(errors['required']).toBeTruthy();
+                  });
+
+                  it('Zone COURRIEL est invalide si elle a un format non conforme a un Email', () => {
+                    component.appliquerNotifications('MeNotifierCourriel');
+                    
+                    let errors = {};
+                    let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
+                    zone.setValue('');
+                    errors = zone.errors || {};
+                    expect(errors['pattern']).toBeTruthy();
+                    
                   });
 
 });

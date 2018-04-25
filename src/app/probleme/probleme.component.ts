@@ -60,13 +60,15 @@ export class ProblemeComponent implements OnInit {
 
     if(typeNotifier === 'MeNotifierCourriel'){
       adresseCourrielControl.enable();
-      adresseCourrielControl.setValidators([Validators.required]);
+      adresseCourrielControl.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
       confirmerCourrielControl.enable();
       confirmerCourrielControl.setValidators([Validators.required]);
+      notifierGroupControl.setValidators([Validators.compose([])]);
     }
 
     telephoneUsagerControl.updateValueAndValidity();
     adresseCourrielControl.updateValueAndValidity();
     confirmerCourrielControl.updateValueAndValidity();
+    notifierGroupControl.updateValueAndValidity();
   }
 }
