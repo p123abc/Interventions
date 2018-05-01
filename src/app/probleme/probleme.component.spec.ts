@@ -85,25 +85,25 @@ describe('ProblemeComponent', () => {
     errors = zone.errors || {};
     expect(errors['longueurMinimum']).toBeFalsy();
     });
-
+// TP ----------------- TP 12 -----------------------
     it('Zone TELEPHONE est désactivée quand ne pas me notifier', () => {
      component.appliquerNotifications('NePasMeNotifier');
 
-    let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+    let zone = component.problemeForm.controls['telephoneUsager'];
     expect(zone.status).toEqual('DISABLED');
     });
 
     it('Zone TELEPHONE est désactivée quand me notifier par courriel', () => {
       component.appliquerNotifications('MeNotifierCourriel');
  
-     let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+     let zone = component.problemeForm.controls['telephoneUsager'];
      expect(zone.status).toEqual('DISABLED');
      });
 
     it('Zone TELEPHONE est activée quand me notifier par Telehpone', () => {
       component.appliquerNotifications('MeNotifierTelephone');
   
-      let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+      let zone = component.problemeForm.controls['telephoneUsager'];
       expect(zone.status).not.toEqual('DISABLED');
      });
 
@@ -111,7 +111,7 @@ describe('ProblemeComponent', () => {
         component.appliquerNotifications('MeNotifierTelephone');
 
         let errors = {};
-        let zone = component.problemeForm.get('notifierGroup.telephoneUsager');
+        let zone = component.problemeForm.controls['telephoneUsager'];
         zone.setValue('');
         errors = zone.errors || {};
         expect(errors['required']).toBeTruthy();
@@ -183,12 +183,16 @@ describe('ProblemeComponent', () => {
                     
                   });
 
-                  it('Zone COURRIEL est invalide si elle a un format non conforme a un Email', () => {
+                  it('La methode retourne NULL si Zone COURRIEL est vide et si CONFIRMERCOURRIEL a un format non conforme a un Email', () => {
                     component.appliquerNotifications('MeNotifierCourriel');
                     
                     let zone1 = component.problemeForm.get('notifierGroup.adresseCourriel');
                     let zone2 = component.problemeForm.get('notifierGroup.confirmerCourriel');
 
+                    zone1.setValue('');
+                    zone2.setValue('');
+                     
+                     
                     
                     
                   });

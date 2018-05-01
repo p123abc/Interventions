@@ -23,8 +23,8 @@ export class ProblemeComponent implements OnInit {
       nom: ['',[Validators.required, VerifierNombresValidator.longueurMinimum(3)]],
       noType:['', [Validators.required]],
       notifier:['NePasMeNotifier'],
+      telephoneUsager: [{value: '', disabled: true}],
       notifierGroup: this.fb.group({
-        telephoneUsager: [{value: '', disabled: true}],
         adresseCourriel: [{value: '', disabled: true}],
         confirmerCourriel: [{value: '', disabled: true}]
       })
@@ -36,7 +36,7 @@ export class ProblemeComponent implements OnInit {
   } // ngOnInit
 
   appliquerNotifications(typeNotifier: string): void {
-    const telephoneUsagerControl = this.problemeForm.get('notifierGroup.telephoneUsager');
+    const telephoneUsagerControl = this.problemeForm.get('telephoneUsager');
     const adresseCourrielControl = this.problemeForm.get('notifierGroup.adresseCourriel');
     const confirmerCourrielControl = this.problemeForm.get('notifierGroup.confirmerCourriel');
     const notifierGroupControl = this.problemeForm.get('notifierGroup');
