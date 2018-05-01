@@ -161,7 +161,7 @@ describe('ProblemeComponent', () => {
                 let zone = component.problemeForm.get('notifierGroup.confirmerCourriel');
                 expect(zone.status).not.toEqual('DISABLED');
                 });
-        
+        // ----------------------- TP 13 -----------------------------------------------
                 it('Zone CONFIRMERCOURRIEL est invalide sans valeur si MeNotifierCourriel', () => {
                   component.appliquerNotifications('MeNotifierCourriel');
         
@@ -177,26 +177,107 @@ describe('ProblemeComponent', () => {
                     
                     let errors = {};
                     let zone = component.problemeForm.get('notifierGroup.adresseCourriel');
-                    zone.setValue('');
+                    zone.setValue('aaa');
                     errors = zone.errors || {};
                     expect(errors['pattern']).toBeTruthy();
                     
                   });
 
-                  it('La methode retourne NULL si Zone COURRIEL est vide et si CONFIRMERCOURRIEL a un format non conforme a un Email', () => {
+                  it('La methode retourne NULL si Zone COURRIEL est vide et si CONFIRMERCOURRIEL est valide', () => {
                     component.appliquerNotifications('MeNotifierCourriel');
                     
                     let zone1 = component.problemeForm.get('notifierGroup.adresseCourriel');
                     let zone2 = component.problemeForm.get('notifierGroup.confirmerCourriel');
 
                     zone1.setValue('');
-                    zone2.setValue('');
-                     
-                     
+                    zone2.setValue('test@hotmail.com');
                     
-                    
+                    let errors = {};
+                    let groupeNotifier = component.problemeForm.get('notifierGroup');
+                    errors = groupeNotifier.errors || {};
+                    expect(errors['courrielConfirmation']).toBeUndefined();
                   });
 
+                  it('La methode retourne NULL si Zone COURRIEL est valide et si CONFIRMERCOURRIEL est vide', () => {
+                    component.appliquerNotifications('MeNotifierCourriel');
+                    
+                    let zone1 = component.problemeForm.get('notifierGroup.adresseCourriel');
+                    let zone2 = component.problemeForm.get('notifierGroup.confirmerCourriel');
 
+                    zone1.setValue('test@hotmail.com');
+                    zone2.setValue('');
+                    
+                    let errors = {};
+                    let groupeNotifier = component.problemeForm.get('notifierGroup');
+                    errors = groupeNotifier.errors || {};
+                    expect(errors['courrielConfirmation']).toBeUndefined();
+                  });
+
+                  it('La methode retourne MATCH si Zone COURRIEL et  CONFIRMERCOURRIEL NE SONT PAS PAREIL', () => {
+                    component.appliquerNotifications('MeNotifierCourriel');
+                    
+                    let zone1 = component.problemeForm.get('notifierGroup.adresseCourriel');
+                    let zone2 = component.problemeForm.get('notifierGroup.confirmerCourriel');
+
+                    zone1.setValue('test@hotmail.com');
+                    zone2.setValue('allo@hotmail.com');
+                    
+                    let errors = {};
+                    let groupeNotifier = component.problemeForm.get('notifierGroup');
+                    errors = groupeNotifier.errors || {};
+                    expect(errors['match']).toBe(true);
+                  });
+
+                  it('La methode courrielConfirmation si Zone COURRIEL est valide et si CONFIRMERCOURRIEL est valide ET IL SONT PAREIL', () => {
+                    component.appliquerNotifications('MeNotifierCourriel');
+                    
+                    let zone1 = component.problemeForm.get('notifierGroup.adresseCourriel');
+                    let zone2 = component.problemeForm.get('notifierGroup.confirmerCourriel');
+
+                    zone1.setValue('valide@hotmail.com');
+                    zone2.setValue('valide@hotmail.com');
+                    
+                    let errors = {};
+                    let groupeNotifier = component.problemeForm.get('notifierGroup');
+                    errors = groupeNotifier.errors || {};
+                    expect(errors['match']).toBeUndefined();
+                  });
+
+                  it('Zone TELEPHONE est invalide avec des caractères npn-numériques', () => {
+                    component.appliquerNotifications('MeNotifierTelephone');
+                    
+                    let errors = {};
+                    let zone = component.problemeForm.controls['telephoneUsager'];
+                    zone.setValue('450 5h6 3333');
+                    errors = zone.errors || {};
+                    expect(errors['pattern']).toBeTruthy();
+                   });
+                   it('Zone TELEPHONE est errors minlengh avec moin de 10 caractères', () => {
+                    component.appliquerNotifications('MeNotifierTelephone');
+                    
+                    let errors = {};
+                    let zone = component.problemeForm.controls['telephoneUsager'];
+                    zone.setValue('4503333');
+                    errors = zone.errors || {};
+                    expect(errors['minlength']).toBeTruthy();
+                   });
+                   it('Zone TELEPHONE est errors maxlengh avec plus de 10 caractères', () => {
+                    component.appliquerNotifications('MeNotifierTelephone');
+                    
+                    let errors = {};
+                    let zone = component.problemeForm.controls['telephoneUsager'];
+                    zone.setValue('450333312132141415151');
+                    errors = zone.errors || {};
+                    expect(errors['maxlength']).toBeTruthy();
+                   });
+                   it('Zone TELEPHONE na pas d erreur avec  10 caractères numériques', () => {
+                    component.appliquerNotifications('MeNotifierTelephone');
+                    
+                    let errors = {};
+                    let zone = component.problemeForm.controls['telephoneUsager'];
+                    zone.setValue('4501234567');
+                    errors = zone.errors || {};
+                    expect(errors['maxlength']).toBeFalsy() && expect(errors['minlength']).toBeFalsy();
+                   });
 
 });

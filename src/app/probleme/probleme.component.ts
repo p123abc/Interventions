@@ -56,7 +56,7 @@ export class ProblemeComponent implements OnInit {
 
     if(typeNotifier === 'MeNotifierTelephone'){
       telephoneUsagerControl.enable();
-      telephoneUsagerControl.setValidators([Validators.required]);
+      telephoneUsagerControl.setValidators([Validators.required, Validators.pattern('[0-9]+'),Validators.minLength(10),Validators.maxLength(10)]);
     }
 
     if(typeNotifier === 'MeNotifierCourriel'){
@@ -64,7 +64,7 @@ export class ProblemeComponent implements OnInit {
       adresseCourrielControl.setValidators([Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+')]);
       confirmerCourrielControl.enable();
       confirmerCourrielControl.setValidators([Validators.required]);
-      notifierGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielDifferents])]);
+      notifierGroupControl.setValidators([Validators.compose([emailMatcherValidator.courrielDifferents()])]);
     }
 
     telephoneUsagerControl.updateValueAndValidity();
