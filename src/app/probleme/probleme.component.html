@@ -93,6 +93,35 @@
             </div>
             
           </div>
+          <!-- Bouton radio -->
+          <div class="form-group row">
+            <div class="col-md-2"></div>
+              <label for ="notificationId" class ="col-md-10 col-form-label">Choix de la notification :</label>
+              <div class="col-md-2"></div>
+              <div class="col-md-10">
+                  <label class="radio-inline">
+                    <input type="radio"
+                           value="NePasMeNotifier"
+                           id="notificationId"
+                           formControlName="notification">&nbsp;Ne pas me notifier
+                  </label>
+                  &nbsp;&nbsp;&nbsp;
+                  <label class="radio-inline">
+                    <input type="radio"
+                           value="MeNotifierTelephone"
+                           id="notificationId"
+                           formControlName="notification">&nbsp;Me notifier par SMS
+                  </label>
+                  &nbsp;&nbsp;&nbsp;
+                  <label class="radio-inline">
+                    <input type="radio"
+                           value="MeNotifierCourriel"
+                           id="notificationId"
+                           formControlName="notification">&nbsp;Me notifier par Courriel
+                  </label>            
+            </div>
+          </div>
+
         </form>
       </div>
       
