@@ -33,6 +33,9 @@ export class ProblemeComponent implements OnInit {
     this.type.obtenirType()
     .subscribe(cat => this.typeProbleme = cat,
               error => this.errorMessage = <any>error);
+
+    this.problemeForm.get('notifier').valueChanges
+    .subscribe(value => this.appliquerNotifications(value));
   } // ngOnInit
 
   appliquerNotifications(typeNotifier: string): void {

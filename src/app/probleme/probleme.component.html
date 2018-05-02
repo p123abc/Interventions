@@ -102,23 +102,61 @@
                   <label class="radio-inline">
                     <input type="radio"
                            value="NePasMeNotifier"
-                           id="notificationId"
-                           formControlName="notification">&nbsp;Ne pas me notifier
+                           id="notificationMoiId"
+                           formControlName="notifier">&nbsp;Ne pas me notifier
                   </label>
                   &nbsp;&nbsp;&nbsp;
                   <label class="radio-inline">
                     <input type="radio"
                            value="MeNotifierTelephone"
-                           id="notificationId"
-                           formControlName="notification">&nbsp;Me notifier par SMS
+                           id="notificationMoiId"
+                           formControlName="notifier">&nbsp;Notifier par Téléphone
                   </label>
                   &nbsp;&nbsp;&nbsp;
                   <label class="radio-inline">
                     <input type="radio"
                            value="MeNotifierCourriel"
-                           id="notificationId"
-                           formControlName="notification">&nbsp;Me notifier par Courriel
+                           id="notificationMoiId"
+                           formControlName="notifier">&nbsp;Notifier par Courriel
                   </label>            
+            </div>
+          </div>
+          <!-- Zone Telephone -->
+          <div class="form-group row">
+            <label for="telehponeID" class="col-md-2 col-form=label text-right">Teléphone :</label>
+            <!-- Indiquer le formGroupName -->
+            <div class="col-md-4">
+              <input class="form-control"
+              id="telephoneID"
+              type="text"
+              placeholder="Numero de telephone (obligatoire si MeNotifierTelephone)"
+              formControlName = "telephoneUsager"/>
+            </div>
+          </div>
+
+          <!-- Zone adresseCourriel -->
+          <div class="form-group row">
+            <label for="adresseCourrielID" class="col-md-2 col-form=label text-right">Adresse Courriel :</label>
+            <!-- Indiquer le formGroupName -->
+            <div class="col-md-4" formGroupName = "notifierGroup">
+              <input class="form-control"
+              id="adresseCourrielID"
+              type="text"
+              placeholder="Adresse courriel (obligatoire si MeNotifierCourriel)"
+              formControlName = "adresseCourriel"/>
+            </div>
+          </div>
+
+          <!-- Zone confirmerCourriel -->
+          <div class="form-group row">
+            <label for="adresseCourrielID" class="col-md-2 col-form=label text-right">Confirmer Courriel :</label>
+            <!-- Indiquer le formGroupName -->
+            <div class="col-md-4" formGroupName = "notifierGroup">
+              <input class="form-control"
+              id="confirmerCourrielID"
+              type="text"
+              placeholder="Confirmer courriel (obligatoire si MeNotifierCourriel)"
+              formControlName = "confirmerCourriel"/>
             </div>
           </div>
 
