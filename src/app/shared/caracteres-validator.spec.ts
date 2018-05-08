@@ -27,14 +27,14 @@ describe('sansEspaces Validator', () => {
         let control = {value: 'Une phrase avec des mots est valide'};
         let validator = VerifierNombresValidator.sansEspaces();
         let result= validator(control as AbstractControl);
-        expect(result['sansEspaces']).toBe(true);
+        expect(result).toBeNull;
     });
 
     it('plage pour la valeur valide avec une phrase avec 3 espaces, des mots et ensuite 3 espaces est valide ', () => {
         let control = {value: '      une phrase avec 3 espaces, des mots et ensuite 3 espaces est valide      '};
         let validator = VerifierNombresValidator.sansEspaces();
         let result= validator(control as AbstractControl);
-        expect(result['sansEspaces']).toBe(true);
+        expect(result).toBeNull;
     });
 //------------------------- TP 09 -------------------------------------------------------------------------------------------------
     it('une expression avec 1 espace et 2 caractère est invalide', () => {
@@ -55,13 +55,13 @@ describe('sansEspaces Validator', () => {
         let control = {value: '   xxx'};
         let validator = VerifierNombresValidator.longueurMinimum(3);
         let result= validator(control as AbstractControl);
-        expect(result['longueurMinimum']).toBe(true);
+        expect(result).toBeNull;
     });
 
     it('une phrase avec 5 espaces, 5 caractères et 5 espaces est valide', () => {
         let control = {value: '     xxxxx     '};
         let validator = VerifierNombresValidator.longueurMinimum(3);
         let result= validator(control as AbstractControl);
-        expect(result['longueurMinimum']).toBe(true);
+        expect(result).toBeNull;
     });
 })

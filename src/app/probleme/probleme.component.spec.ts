@@ -43,7 +43,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.controls['nom'];
      zone.setValue('a'.repeat(3));
      errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeTruthy();
+    expect(errors).toBeNull;
     });
 
   it('Zone NOM valide avec 200 caractères', () => {
@@ -51,7 +51,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.controls['nom'];
     zone.setValue('a'.repeat(200));
     errors = zone.errors || {};
-    expect(errors['longueurMinimum']).toBeTruthy();
+    expect(errors).toBeNull;
     });
 
   it('Zone NOM invalide avec aucune valeur', () => {
