@@ -7,9 +7,9 @@ describe('interventions App', () => {
     page = new AppPage();
   });
 
-  it('doit afficher le titre du formulaire Déclarer un problèm', () => {
+  it('doit afficher le titre du formulaire Gestion problème', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Déclarer un problème');
+    expect(page.getParagraphText()).toEqual('Gestion problème');
   });
 
   it('doit activer le bouton Sauvegarder avec champs valides scénario nominal', () => {

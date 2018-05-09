@@ -2,11 +2,11 @@ import { browser, by, element, ElementFinder } from 'protractor';
 
 export class AppPage {
   navigateTo() {
-    return browser.get('/');
+    return browser.get('/probleme');
   }
 
   getParagraphText() {
-    return element(by.css('inter-root h1')).getText();
+    return element(by.css('inter-root h5')).getText();
   }
 
   setChampsValidesScenarioNominal() : void {
