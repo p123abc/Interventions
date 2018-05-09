@@ -25,7 +25,7 @@ export class AppPage {
       // Sélectionner le X élément dans la zone de liste déroulante   
       element(by.id('noTypeId')).all(by.tagName('option')).get(2).click();         
       // Cliquer sur le bouton radio voulu   
-      element.all(by.id('notificationMoiId')).get(2).click();   
+      element.all(by.id('notificationMoiId')).get(1).click();   
       element(by.id('telephoneID')).sendKeys('5141231234');     
       element(by.id('descriptionProblemeId')).sendKeys('Problème entre la chaise et le clavier...'); 
     }
@@ -34,9 +34,9 @@ export class AppPage {
       element(by.id('prenom')).sendKeys('patrick');   
       element(by.id('nom')).sendKeys('papineau');       
       // Sélectionner le X élément dans la zone de liste déroulante   
-      element(by.id('noTypeProblemeId')).all(by.tagName('option')).get(2).click();         
+      element(by.id('noTypeId')).all(by.tagName('option')).get(2).click();         
       // Cliquer sur le bouton radio voulu   
-      element.all(by.id('notificationMoiId')).get(1).click();   
+      element.all(by.id('notificationMoiId')).get(2).click();   
       element(by.id('adresseCourrielID')).sendKeys('aa@bbb.com');   
       element(by.id('confirmerCourrielID')).sendKeys('aa@bbb.com');       
       element(by.id('descriptionProblemeId')).sendKeys('Problème entre la chaise et le clavier...'); 
@@ -47,17 +47,17 @@ export class AppPage {
     }   
 
     setZonePrenomProblemeCaracteresInsuffisant() : void {
-      element(by.id('prenomProblemeId')).clear();
-      element(by.id('prenomProblemeId')).sendKeys('XX');
+      element(by.id('prenom')).clear();
+      element(by.id('prenom')).sendKeys('XX');
     }
   
     setZonePrenomProblemeCaracteresSuffisant() : void {
-      element(by.id('prenomProblemeId')).clear();
-      element(by.id('prenomProblemeId')).sendKeys('XXXXX');
+      element(by.id('prenom')).clear();
+      element(by.id('prenom')).sendKeys('XXXXX');
     }
   
     obtenirClasseZonePrenomProbleme()   { 
-      return element(by.id('prenomProblemeId')).getAttribute("class");
+      return element(by.id('prenom')).getAttribute("class");
     }
 
 }

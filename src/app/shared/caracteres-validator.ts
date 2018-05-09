@@ -14,7 +14,7 @@ export class VerifierNombresValidator {
     static longueurMinimum(min: number): ValidatorFn {
         return (c: AbstractControl): { [key: string]: boolean } | null => {
             // remove all space
-            if (c.value.replace(/ /g,"").length >= min && c.value !== null){
+            if (c.value && c.value.replace(/ /g,"").length >= min){
                 return null;
             }
             return { 'longueurMinimum': false};

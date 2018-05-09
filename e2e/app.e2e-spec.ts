@@ -12,17 +12,17 @@ describe('interventions App', () => {
     expect(page.getParagraphText()).toEqual('Déclarer un problème');
   });
 
-/*
+
   it('doit activer le bouton Sauvegarder avec champs valides scénario nominal', () => {
     page.setChampsValidesScenarioNominal();                    
     expect(page.boutonSubmit().isEnabled()).toBe(true);
   });  
-  
+ 
   it('doit activer le bouton Sauvegarder avec champs valides scénario alternatif par message TEXTE', () => {
     page.setChampsValidesScenarioAlternatifParMessageTexte();                    
     expect(page.boutonSubmit().isEnabled()).toBe(true);
   });  
-
+ 
   it('doit activer le bouton Sauvegarder avec champs valides scénario alternatif par message COURRIEL', () => {
     page.setChampsValidesScenarioAlternatifParCourriel();                    
     expect(page.boutonSubmit().isEnabled()).toBe(true);
@@ -37,7 +37,7 @@ describe('interventions App', () => {
     page.setZonePrenomProblemeCaracteresInsuffisant();  
     expect(page.obtenirClasseZonePrenomProbleme()).toContain('is-invalid');
   });
-*/
+
  
 
 });
