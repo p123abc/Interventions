@@ -9,9 +9,9 @@ describe('interventions App', () => {
 
   it('doit afficher le titre du formulaire Gestion problème', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Gestion problème');
+    expect(page.getParagraphText()).toEqual('Déclarer un problème');
   });
-  
+
 /*
   it('doit activer le bouton Sauvegarder avec champs valides scénario nominal', () => {
     page.setChampsValidesScenarioNominal();                    
