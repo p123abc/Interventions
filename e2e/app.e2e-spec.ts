@@ -11,7 +11,8 @@ describe('interventions App', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('Gestion problème');
   });
-
+  
+/*
   it('doit activer le bouton Sauvegarder avec champs valides scénario nominal', () => {
     page.setChampsValidesScenarioNominal();                    
     expect(page.boutonSubmit().isEnabled()).toBe(true);
@@ -36,7 +37,7 @@ describe('interventions App', () => {
     page.setZonePrenomProblemeCaracteresInsuffisant();  
     expect(page.obtenirClasseZonePrenomProbleme()).toContain('is-invalid');
   });
-
+*/
  
 
 });
